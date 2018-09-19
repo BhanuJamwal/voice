@@ -1,0 +1,26 @@
+{% extends 'driveso/base.html' %}
+<h1>home</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+    	{% block head %}
+    	<title>home</title>
+    	{% endblock %}
+    	
+    </head>
+    <body>
+    	{% block body %}
+        <div>
+        <form method="get">
+            {{ filter.form.as_p }}
+            <button type="submit">Search</button>
+        </form>
+        <ul>
+            {% for driving in filter.qs %}
+            <center><li>{{driving.name}}</li></center>
+            {% endfor %}
+        </ul>
+        </div>
+        {% endblock %}
+    </body> 
+</html>      

@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block head %}
+              <title>Base</title>
+
+        {% endblock %}
+        <div class="container">
+
+      <!-- Static navbar -->
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+            
+              </div>
+            <div id="navbar" class="navbar-collapse collapse">
+            
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/driveso/register">register</a></li>
+              </ul>
+              <center><h1>HUMAN SOCIALIST REPUBLICAN UNION</h1></center>
+
+              <ul class="nav navbar-nav navbar-top">
+                <li><a href="/post/post">home</a></li>
+              </ul>
+            </div>
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a><!--/.nav-collapse -->
+          </div><!--/.container-fluid -->
+        </nav>
+      </div>
+        <style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:#121;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+    </head>
+    <body>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    <br>
+    <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="/driveso/login">login</a>
+  <a href="/driveso/profile">Profile</a>
+  <a href="#">Terms and Conditions</a>
+  <a href="#">Contact and Help</a>
+  <a href="#">About us</a>
+  <a href="#">History</a>
+</div>
+
+<div id="main">
+ 
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+</div>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+<script type="text/javascript">
+  $(document).ready(function(event){
+    $(document).on('click', '#like', function(event){
+      event.preventDefault();
+      var pk = $(this).attr('value');
+      $.ajax({
+        type:'POST',
+        url:{% url 'like_post' %},
+        data:{'id':pk, 'csrfmiddlewaretoken':'{{ csrf_token }}'};
+        dataType:'json',
+        success: function(response){
+          $('#like-section').html(response['form']);
+          console.log($('#like-section').html(response['form']));
+        };
+        error: function(rs, e){
+          console.log(rs.responseText);
+
+        };
+
+      });
+    });
+  });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+   
+        {% block body %}
+              <h1>Base</h1>
+        {% endblock %}
+    </body>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</html>
+
+              
+              
+                
+             

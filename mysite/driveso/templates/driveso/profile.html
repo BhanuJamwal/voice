@@ -1,0 +1,30 @@
+{% extends 'driveso/base.html' %}
+<h1>home</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+    	{% block head %}
+    	<title>profile</title>
+    	{% endblock %}
+    	
+    </head>
+    <body>
+    	{% block body %}
+        <div class="container">
+            <p>
+                {{user}}
+                {{user.email}}
+                {{user.phone}}
+            </p>
+        </div>
+        <form method=”post”>
+        {% csrf_token %}
+        {{ user_form.as_p }}
+       
+      
+        </form> 	
+        {% endblock %}
+        }
+        }
+    </body> 
+</html>    
