@@ -15,7 +15,7 @@ django-smart-selects==1.5.4
 django-templated-mail==1.1.1
 django-twilio==0.9.0
 django-two-factor-auth==1.7.0
-djangorestframework==3.8.2
+djangorestframework==3.11.2
 djangorestframework-jwt==1.11.0
 djoser==1.1.5
 idna==2.6
